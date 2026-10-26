@@ -1,0 +1,436 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>NAWA'A</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&display=swap">
+<style>
+  /* Layout: centered single-column hub, 460px max, maroon-and-blue brand */
+  :root {
+    --bg: #F0EDEA;
+    --surface: #FAFAF8;
+    --fg: #2A1F1A;
+    --fg-muted: #7A6E64;
+    --maroon: #570302;
+    --maroon-light: #6B1A19;
+    --blue: #93AEC7;
+    --blue-muted: #B8CBDB;
+    --accent-bg: rgba(87, 3, 2, 0.06);
+    --accent-bg-hover: rgba(87, 3, 2, 0.10);
+    --border: #DDD7D0;
+    --radius: 14px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #151211;
+      --surface: #1F1C1A;
+      --fg: #EDE8E3;
+      --fg-muted: #9A8F84;
+      --maroon: #C4706E;
+      --maroon-light: #D49290;
+      --blue: #93AEC7;
+      --blue-muted: #6B8BA8;
+      --accent-bg: rgba(196, 112, 110, 0.10);
+      --accent-bg-hover: rgba(196, 112, 110, 0.16);
+      --border: #302B27;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #151211;
+    --surface: #1F1C1A;
+    --fg: #EDE8E3;
+    --fg-muted: #9A8F84;
+    --maroon: #C4706E;
+    --maroon-light: #D49290;
+    --blue: #93AEC7;
+    --blue-muted: #6B8BA8;
+    --accent-bg: rgba(196, 112, 110, 0.10);
+    --accent-bg-hover: rgba(196, 112, 110, 0.16);
+    --border: #302B27;
+    color-scheme: dark;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'Inter', system-ui, sans-serif;
+    display: flex;
+    justify-content: center;
+    padding-inline: 20px;
+    padding-block: 0;
+    min-height: 100dvh;
+  }
+
+  .hub {
+    width: 100%;
+    max-width: 460px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-block: 36px 56px;
+    gap: 24px;
+  }
+
+  /* ---- Header ---- */
+  .header {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .logo {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2.5px solid var(--maroon);
+    margin-bottom: 4px;
+  }
+
+  .org-name {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 2.1rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    line-height: 1;
+    color: var(--fg);
+    margin: 0;
+  }
+
+  .org-ar {
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--maroon);
+    letter-spacing: 0.02em;
+    font-family: 'Inter', system-ui, sans-serif;
+    direction: rtl;
+  }
+
+  .tagline {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--fg-muted);
+    line-height: 1.4;
+    margin: 2px 0 0 0;
+  }
+
+  /* ---- About ---- */
+  .about {
+    width: 100%;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 22px 20px;
+  }
+
+  .about h2 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.15rem;
+    font-weight: 500;
+    margin: 0 0 10px 0;
+    color: var(--maroon);
+    text-align: center;
+    letter-spacing: 0.03em;
+  }
+
+  .about p {
+    font-size: 0.82rem;
+    line-height: 1.7;
+    color: var(--fg-muted);
+    margin: 0 0 10px 0;
+  }
+
+  .about p:last-of-type { margin-bottom: 0; }
+
+  .focus-tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 7px;
+    margin-top: 14px;
+  }
+
+  .tag {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 5px 12px;
+    border-radius: 100px;
+    background: var(--accent-bg);
+    color: var(--maroon);
+  }
+
+  /* ---- Divider ---- */
+  .divider {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .divider::before, .divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+  .divider-star {
+    color: var(--maroon);
+    font-size: 0.65rem;
+    opacity: 0.5;
+  }
+
+  /* ---- Links ---- */
+  .links {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    width: 100%;
+  }
+
+  .link-btn {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    width: 100%;
+    padding: 14px 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    text-decoration: none;
+    color: var(--fg);
+    font-size: 0.88rem;
+    font-weight: 500;
+    transition: border-color 0.2s, background 0.2s, transform 0.12s;
+    cursor: pointer;
+  }
+
+  .link-btn:hover {
+    border-color: var(--maroon);
+    background: var(--accent-bg-hover);
+    transform: translateY(-1px);
+  }
+  .link-btn:active { transform: translateY(0); }
+
+  .link-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .link-icon.maroon-bg {
+    background: var(--accent-bg);
+  }
+  .link-icon.blue-bg {
+    background: rgba(147, 174, 199, 0.15);
+  }
+
+  .link-icon svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  .link-icon.maroon-bg svg { color: var(--maroon); }
+  .link-icon.blue-bg svg { color: var(--blue); }
+
+  .link-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    min-width: 0;
+  }
+
+  .link-label {
+    font-weight: 600;
+    font-size: 0.88rem;
+  }
+
+  .link-desc {
+    font-size: 0.73rem;
+    color: var(--fg-muted);
+    font-weight: 400;
+  }
+
+  .link-arrow {
+    margin-left: auto;
+    flex-shrink: 0;
+    color: var(--fg-muted);
+    opacity: 0.5;
+    transition: opacity 0.2s;
+  }
+  .link-btn:hover .link-arrow { opacity: 1; color: var(--maroon); }
+
+  /* ---- Footer ---- */
+  .footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    padding-top: 6px;
+  }
+
+  .social-row {
+    display: flex;
+    gap: 10px;
+  }
+
+  .social-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--fg-muted);
+    transition: border-color 0.2s, color 0.2s, background 0.2s;
+  }
+  .social-btn:hover {
+    border-color: var(--maroon);
+    color: var(--maroon);
+    background: var(--accent-bg);
+  }
+  .social-btn svg { width: 17px; height: 17px; }
+
+  .footer-copy {
+    font-size: 0.68rem;
+    color: var(--fg-muted);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-weight: 500;
+    text-align: center;
+    line-height: 1.6;
+  }
+
+  .footer-tagline {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 0.8rem;
+    color: var(--fg-muted);
+    text-transform: none;
+    letter-spacing: 0;
+    font-weight: 400;
+  }
+</style>
+
+<div class="hub">
+  <!-- Header -->
+  <div class="header">
+    <img class="logo" src="data:image/webp;base64,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" alt="NAWA'A Organization">
+    <h1 class="org-name">NAWA'A</h1>
+    <span class="org-ar">نَوَاء</span>
+    <p class="tagline">Where youth grows. Where ideas begin.</p>
+  </div>
+
+  <!-- About -->
+  <div class="about">
+    <h2>About NAWA'A</h2>
+    <p>NAWA'A is a youth-led, non-profit organization dedicated to empowering young people aged 13&ndash;18 through education, financial literacy, economic awareness, and business education. We help young people understand the world of finance and business while making opportunities more accessible to those who need them.</p>
+    <p>Through workshops, events, collaborative projects, and educational initiatives, we strive to create meaningful opportunities for young people to learn, develop practical skills, and make a positive impact in their communities.</p>
+  </div>
+
+  <div class="divider"><span class="divider-star">&#10022;</span></div>
+
+  <!-- Links -->
+  <div class="links">
+    <a href="https://forms.gle/QRLxGcytpwzktPgn7" target="_blank" rel="noopener" class="link-btn">
+      <div class="link-icon maroon-bg">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
+      </div>
+      <div class="link-text">
+        <span class="link-label">Join Us</span>
+        <span class="link-desc">Apply to become part of NAWA'A</span>
+      </div>
+      <svg class="link-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+    </a>
+
+    <a href="#collaborate" class="link-btn">
+      <div class="link-icon blue-bg">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      </div>
+      <div class="link-text">
+        <span class="link-label">Collaborate With Us</span>
+        <span class="link-desc">Schools, organizations & partnerships</span>
+      </div>
+      <svg class="link-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+    </a>
+
+    <a href="#events" class="link-btn" onclick="return false;">
+      <div class="link-icon maroon-bg">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      </div>
+      <div class="link-text">
+        <span class="link-label">Events</span>
+        <span class="link-desc">Upcoming workshops & activities</span>
+      </div>
+      <svg class="link-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+    </a>
+
+    <a href="https://www.instagram.com/nawaa.organisation" target="_blank" rel="noopener" class="link-btn">
+      <div class="link-icon blue-bg">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </div>
+      <div class="link-text">
+        <span class="link-label">Instagram</span>
+        <span class="link-desc">Follow @nawaa.organisation</span>
+      </div>
+      <svg class="link-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+    </a>
+
+    <a href="#team" class="link-btn" onclick="return false;">
+      <div class="link-icon maroon-bg">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <div class="link-text">
+        <span class="link-label">Our Team</span>
+        <span class="link-desc">Departments & team members</span>
+      </div>
+      <svg class="link-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+    </a>
+
+    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=nawaaorganisation3@gmail.com" target="_blank" rel="noopener" class="link-btn">
+      <div class="link-icon blue-bg">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      </div>
+      <div class="link-text">
+        <span class="link-label">Contact Us</span>
+        <span class="link-desc">nawaaorganisation3@gmail.com</span>
+      </div>
+      <svg class="link-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+    </a>
+
+    <a href="#feedback" class="link-btn" onclick="return false;">
+      <div class="link-icon maroon-bg">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </div>
+      <div class="link-text">
+        <span class="link-label">Feedback & Suggestions</span>
+        <span class="link-desc">Share your thoughts with us</span>
+      </div>
+      <svg class="link-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+    </a>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="social-row">
+      <a href="https://www.instagram.com/nawaa.organisation" target="_blank" rel="noopener" class="social-btn" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </a>
+    </div>
+    <div class="footer-copy">
+      <span class="footer-tagline">Where youth grows. Where ideas begin.</span><br>
+      &copy; 2026 NAWA'A Organization
+    </div>
+  </div>
+</div>
+
+</body></html>
